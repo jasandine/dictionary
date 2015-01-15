@@ -1,0 +1,51 @@
+<h1>Dictionary</h1>
+
+<h2>Add a new term</h2>
+
+<form action="/dictionary_term" method="post">
+  <label for="english_term">English term</label>
+  <input id="english_term" name="english_term" type="text">
+
+  <label for="spanish_term">Spanish term</label>
+  <input id="spanish_term" name="spanish_term" type="text">
+
+  <label for="german_term">German term</label>
+  <input id="german_term" name="german_term" type="text">
+
+  <br />
+
+  <label for="definition1">Definition</label>
+  <input id="definition1" name="definition1" type="text">
+
+  <label for="definition2">Additional definition</label>
+  <input id="definition2" name="definition2" type="text">
+
+  <label for="definition3">Additional definition</label>
+  <input id="definition3" name="definition3" type="text">
+
+  <button type="submit">Add term</button>
+</form>
+
+<p>
+    <% @terms.each() do |term| %>
+      <%= term.word_array().at(0) %>
+  <% end %>
+</p>
+
+
+<form action="/search" method="post">
+  <label for="search">Search a term</label>
+  <input id="search" name="search" type="text">
+  <button type="submit">Search!</button>
+</form>
+
+
+<ul>
+    <% if @found_term == nil %>
+      The term was not found
+    <% else %>
+      <li> <%= @found_term.word_array()[0] %> </li>
+      <li> <%= @found_term.definition_array()[0] %> </li> 
+    <% end %>
+
+</ul>
